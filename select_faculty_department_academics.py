@@ -29,16 +29,16 @@ with sync_playwright() as p:
                 dep_title = dep.query_selector(".title-name").inner_text().strip().upper()
                 if department_input == dep_title:
                     academics = dep.query_selector_all(".academicianjs")
-                    print(f"\n📘 {faculty_name} / {dep_title} AKADEMİSYENLERİ\n")
+                    print(f"\n {faculty_name} / {dep_title} AKADEMİSYENLERİ\n")
 
                     for a in academics:
                         name = a.query_selector("p").inner_text().strip()
                         link = a.query_selector("a").get_attribute("href")
                         img = a.query_selector("img").get_attribute("src")
 
-                        print("👨‍🏫 İsim:", name)
-                        print("🔗 Profil:", link)
-                        print("🖼️ Fotoğraf:", img)
+                        print(" İsim:", name)
+                        print(" Profil:", link)
+                        print(" Fotoğraf:", img)
                         print("-" * 50)
 
                     found = True
@@ -47,6 +47,6 @@ with sync_playwright() as p:
                 break
 
     if not found:
-        print("❌ Belirtilen fakülte veya bölüm bulunamadı!")
+        print(" Belirtilen fakülte veya bölüm bulunamadı!")
 
     browser.close()

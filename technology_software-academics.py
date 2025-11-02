@@ -14,9 +14,9 @@ with sync_playwright() as p:
     for faculty in faculties:
         faculty_name = faculty.query_selector(".title-name").inner_text().strip()
 
-        # 🎯 Sadece Teknoloji Fakültesi içindeki bölümleri kontrol et
+        # Sadece Teknoloji Fakültesi içindeki bölümleri kontrol et
         if "TEKNOLOJİ FAKÜLTESİ" in faculty_name.upper():
-            print(f"🏛️ Fakülte bulundu: {faculty_name}\n")
+            print(f" Fakülte bulundu: {faculty_name}\n")
 
             # Bu fakültenin altındaki tüm alt birimleri bul
             sub_departments = faculty.query_selector_all(".toggle")
@@ -24,7 +24,7 @@ with sync_playwright() as p:
             for dep in sub_departments:
                 dep_title = dep.query_selector(".title-name").inner_text().strip()
                 if dep_title.upper() == "YAZILIM MÜHENDİSLİĞİ":
-                    print("📘 TEKNOLOJİ FAKÜLTESİ / YAZILIM MÜHENDİSLİĞİ AKADEMİSYENLERİ\n")
+                    print(" TEKNOLOJİ FAKÜLTESİ / YAZILIM MÜHENDİSLİĞİ AKADEMİSYENLERİ\n")
                     academics = dep.query_selector_all(".academicianjs")
 
                     for a in academics:
@@ -32,9 +32,9 @@ with sync_playwright() as p:
                         link = a.query_selector("a").get_attribute("href")
                         img = a.query_selector("img").get_attribute("src")
 
-                        print("👨‍🏫 İsim:", name)
-                        print("🔗 Profil:", link)
-                        print("🖼️ Fotoğraf:", img)
+                        print(" İsim:", name)
+                        print(" Profil:", link)
+                        print(" Fotoğraf:", img)
                         print("-" * 50)
                     break
 

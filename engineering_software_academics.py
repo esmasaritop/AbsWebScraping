@@ -14,16 +14,16 @@ with sync_playwright() as p:
     for dep in departments:
         title = dep.query_selector(".title-name").inner_text().strip()
         if title == "YAZILIM MÜHENDİSLİĞİ":
-            print("📘 YAZILIM MÜHENDİSLİĞİ AKADEMİSYENLERİ\n")
+            print(" YAZILIM MÜHENDİSLİĞİ AKADEMİSYENLERİ\n")
             academics = dep.query_selector_all(".academicianjs")
             for a in academics:
                 name = a.query_selector("p").inner_text().strip()
                 link = a.query_selector("a").get_attribute("href")
                 img = a.query_selector("img").get_attribute("src")
 
-                print("👨‍🏫 İsim:", name)
-                print("🔗 Profil:", link)
-                print("🖼️ Fotoğraf:", img)
+                print(" İsim:", name)
+                print(" Profil:", link)
+                print(" Fotoğraf:", img)
                 print("-" * 50)
             break
 
